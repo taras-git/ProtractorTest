@@ -1,0 +1,203 @@
+Input data:
+
+computer name1: 'NewAngularComputer'
+computer name2: 'BrandNewSuperComputer'
+computer name3: 'UPDATED'
+
+
+
+================================================================
+
+Test Cases for Home page:
+
+TEST home_page_1
+Use Case: Navigate to Homepage
+
+Purpose: Test if home page is correctly displayed
+Prerequisite: none
+Steps: 
+1- navigate in browser to: http://computer-database.herokuapp.com/computers
+2- verify if Header contains text "XXX computers found"
+3- verify if input search field is visible
+4- verify if "Search" button is visible
+
+Expected results: All fields are visible
+
+
+TEST home_page_2
+Use Case: Navigate to Add computer page
+
+Purpose: Test navigation from Home to Add computer page
+Prerequisite: none
+Steps: 
+1- navigate in browser to: http://computer-database.herokuapp.com/computers
+2- press button Add new computer
+2- verify if Header contains text "Add a computer"
+3- verify if button "Create this computer" is visible
+4- verify if button "Cancel" is visible
+
+Expected results: Add computer Page is open, all fields are visible
+
+
+==============================================================
+
+Test Cases for Add new computer page:
+
+TEST add_page_1
+Use Case: Navigate to Add new computer page
+
+Purpose: Test if Add new computer page is correctly displayed
+Prerequisite: none
+Steps: 
+1- navigate in browser to: http://computer-database.herokuapp.com/computers/new
+2- verify if Header contains text "Add a computer"
+3- verify if button "Add a computer" is visible
+4- verify if button "Cancel" is visible
+5- verify if input field "Computer name" is visible
+6- verify if input field "Discontinued date" is visible
+7- verify if input field "Introduced date" is visible
+8- verify if dropdown list "Choose a company" is visible
+
+Expected results: All fields are visible
+
+
+TEST add_page_2
+Use Case: Navigate to Add new computer page and back to Home page
+
+Purpose: Test if Add new computer page button Cancel works
+Prerequisite: none
+Steps: 
+1- navigate in browser to: http://computer-database.herokuapp.com/computers/new
+2- press button Cancel
+3- verify if Home page header text "XXX computers found" is displayed
+
+Expected results: Returned to Home page
+
+
+
+TEST add_page_3
+Use Case: Add a new computer by its name
+
+Purpose: Test if Add new computer page button Add works
+Prerequisite: retrieve <computer name1> (from input data)
+Steps: 
+1- navigate in browser to: http://computer-database.herokuapp.com/computers/new
+2- fill input field "Computer name" with <computer name1>
+3- press button "Create this computer"
+4- verify if message "Done! Computer {computer name1} has been created" is displayed
+
+Expected results: Message is displayed
+
+
+
+TEST add_page_4
+Use Case: Add a new computer by its all data
+
+Purpose: Test if Add new computer page all fields work
+Prerequisite: retrieve <computer name2> (from input data)
+Steps: 
+1- navigate in browser to: http://computer-database.herokuapp.com/computers/new
+2- fill input field "Computer name" with <computer name2> 
+3- fill input field "Introduce date" with date
+4- fill input field "Discontinued date" with date
+5- choose a company from "Choose company" dropdown
+6- press button "Create this computer"
+7- verify if message "Done! Computer {cpmputer name2} has been created" is displayed
+
+Expected results: Message is displayed
+
+
+
+TEST add_page_5
+Use Case: Can not add a new computer without its name
+
+Purpose: Test if new computer is not added if no name provided
+Prerequisite: none
+Steps: 
+1- navigate in browser to: http://computer-database.herokuapp.com/computers/new
+2- press button "Create this computer"
+3- verify if input field with computer name is red hihglighted and 
+message with text "Computer name required" is displayed
+
+Expected results: Message is displayed
+
+
+==============================================================
+
+
+Test Cases for Update computer page:
+
+TEST update_page_1
+Use Case: Navigate to Update computer page
+
+Purpose: Test if Update computer page is correctly displayed
+Prerequisite: retrieve <computer name1> (from input data)
+Steps: 
+1- navigate in browser to: http://computer-database.herokuapp.com/computers
+2- fill input field "Computer name" with <computer name1> 
+3- press search button, wait for result list displayed
+4- click <computer name1> from result list
+5- verify if header "Edit computer" is displayed
+
+Expected results: Update computer page is displayed
+
+
+TEST update_page_2
+Use Case: Navigate to Home page
+
+Purpose: Test if button Cancel works during updating
+Prerequisite: retrieve <computer name1> (from input data)
+Steps: 
+1- navigate in browser to: http://computer-database.herokuapp.com/computers
+2- fill input field "Computer name" with <computer name1>
+3- press search button, wait for result list displayed
+4- click <computer name1> from result list
+6- press button Cancel
+7- verify if Home page Header contains text "XXX computers found"
+
+Expected results: Back to Home page
+
+
+TEST update_page_3
+Use Case: Update a computer
+
+Purpose: Test if computer is updated
+Prerequisite: retrieve <computer name1> (from input data)
+	retrieve <computer name3> (from input data)
+Steps: 
+1- navigate in browser to: http://computer-database.herokuapp.com/computers
+2- fill input field "Computer name" with <computer name1> 
+3- press search button, wait for result list displayed
+4- click <computer name1> from result list
+5- verify if button "Delete this computer" is displayed
+6- send <computer name3> to input field
+7- press button "Save this computer"
+8- verify if message with text "Done! Computer ' + {computer name1} + {computer name3} + ' has been updated" is displayed
+
+Expected results: Message is displayed
+
+==============================================================
+
+
+Test Cases for Delete computer page:
+
+TEST delete_page_1
+Use Case: Delete computer 
+
+Purpose: Test if computer is deleteed and navigate to Home page
+Prerequisite: retrieve <computer name1> (from input data)
+Steps: 
+1- navigate in browser to: http://computer-database.herokuapp.com/computers
+2- fill input field "Computer name" with <computer name1>
+3- press search button, wait for result list displayed
+4- click <computer name1> from result list
+5- verify if button "Delete this computer" is displayed
+6- press button "Delete this computer"
+7- verify if message with text "Done! Computer has been deleted" is displayed
+8- verify if Home page Header contains text "XXX computers found"
+
+Expected results: Computer is deleted
+
+
+==============================================================
+
